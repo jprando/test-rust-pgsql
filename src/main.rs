@@ -2,9 +2,16 @@ use tokio_postgres::{Error, NoTls};
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    
+    let pg_host = std::env::var("PGHOST").unwrap_or_else(|_| "127.0.0.1".to_owned());
+    let pg_port = std::env::var("PGPORT").unwrap_or_else(|_| "5432".to_owned());
+    let pg_user = std::env::var("PGUSER").unwrap_or_else(|_| "postgres".to_owned());
+    let pg_pass = std::env::var("PGPASS").unwrap_or_else(|_| "".to_owned());
+    let pg_data = std::env::var("PGDATA").unwrap_or_else(|_| "postgres".to_owned());
+    
     let conn_string = format!(
         "host={} port={} user={} password={} dbname={} application_name={}",
-        "127.0.0.1", 5432, "postgres", "mys3cr3t!password", "mydatabase", "test-rust-pgsql"
+        pg_host, pg_port, pg_user, pg_pass, pg_data, "test-rust-pgsql"
     );
 
     let (client, connection) = tokio_postgres::connect(conn_string.as_str(), NoTls).await?;

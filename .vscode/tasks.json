@@ -7,7 +7,7 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "Rust: cargo run - test-rust-pgsql"
+			"label": "Rust: cargo run - test-rust-pgsql",
 		}
 	]
 }
