@@ -16,10 +16,10 @@ Exemplo de utilização:
 
 ```bash
 env PGHOST=meuservidor \
-	PGPORT=5432 \
-	PGUSER=meuusuario \
-	PGPASS=minhasenhasupersecreta \
-	PGDATA=meubandodedados \
+    PGPORT=5432 \
+    PGUSER=meuusuario \
+    PGPASS=minhasenhasupersecreta \
+    PGDATA=meubandodedados \
 ./test-rust-pgsql
 ```
 
@@ -34,7 +34,7 @@ O arquivo deve estar localizado na mesma pasta do binário a ser executado exemp
 
 com o seguinte conteúdo:
 
-```dotenv
+```env
 PGHOST=meuservidor
 PGPORT=5432
 PGUSER=meuusuario
