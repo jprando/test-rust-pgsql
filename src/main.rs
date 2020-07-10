@@ -1,18 +1,21 @@
 use dotenv;
 use tokio_postgres::{Error, NoTls};
 
+fn config(name: &str, default_value: &str) -> String {
+    dotenv::var(name).unwrap_or_else(|_| default_value.to_owned())
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     
-    let pg_host = dotenv::var("PGHOST").unwrap_or_else(|_| "127.0.0.1".to_owned());
-    let pg_port = dotenv::var("PGPORT").unwrap_or_else(|_| "5432".to_owned());
-    let pg_user = dotenv::var("PGUSER").unwrap_or_else(|_| "postgres".to_owned());
-    let pg_pass = dotenv::var("PGPASS").unwrap_or_else(|_| "".to_owned());
-    let pg_data = dotenv::var("PGDATA").unwrap_or_else(|_| "postgres".to_owned());
-    
     let conn_string = format!(
         "host={} port={} user={} password={} dbname={} application_name={}",
-        pg_host, pg_port, pg_user, pg_pass, pg_data, "test-rust-pgsql"
+        config("PGHOST", "127.0.0.1"),
+        config("PGPORT","5432"),
+        config("PGUSER","postgres"),
+        config("PGPASS",""),
+        config("PGDATA","postgres"),
+        "test-rust-pgsql"
     );
 
     let (client, connection) = tokio_postgres::connect(conn_string.as_str(), NoTls).await?;
