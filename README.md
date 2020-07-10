@@ -25,4 +25,4 @@ env PGHOST=meuservidor \
 
 ## fn main () { show_me_the_code(); }
 
-[main.rs](/src/main.rs)
+[💾 main.rs](/src/main.rs)
