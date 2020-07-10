@@ -22,3 +22,7 @@ env PGHOST=meuservidor \
 	PGDATA=meubandodedados \
 ./test-rust-pgsql
 ```
+
+## fn show_me () { the_code; }
+
+[main.rs](/src/main.rs)
