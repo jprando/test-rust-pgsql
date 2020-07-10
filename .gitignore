@@ -1,3 +1,4 @@
 /target
+.env
 /src/main
 test-rust-pgsql-x86_64-linux
